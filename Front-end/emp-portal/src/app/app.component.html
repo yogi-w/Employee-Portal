@@ -1,0 +1,78 @@
+
+<div >
+    <h1 style="text-align: center;">Employee Form</h1>
+
+  <div class="container">
+    
+    <form class="emp-form">
+      <div class="form-group">
+        <label>Emp ID</label>
+        <input type="text" 
+        required
+        name="empId"
+        [(ngModel)] = "empId"
+        placeholder="Enter Employee ID">
+      </div>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" 
+        [(ngModel)] = "name"
+        name="name"
+        placeholder="Enter Name">
+      </div>
+
+      <div class="form-group">
+        <label>Project</label>
+        <input type="text" 
+        name="project"
+        [(ngModel)] = "project"
+        placeholder="Enter Project">
+      </div>
+
+      <div class="button-group">
+        <button type="button" (click) = "submitEmployee()" class="btn add-btn">Add Employee</button>
+        <button type="button" (click)="getData()" class="btn fetch-btn">Employee List</button>
+
+        <!--  -->
+      </div>
+    </form>
+
+
+  </div>
+
+    <hr>
+
+
+
+
+<table *ngIf="employees.length > 0"
+ border="1" style="margin:20px auto; padding: 5px;">
+  <tr>
+    <th>Emp ID</th>
+    <th>Name</th>
+    <th>Project</th>
+  </tr>
+
+  <tr *ngFor="let emp of employees">
+    <td>{{ emp.empId }}</td>
+    <td>{{ emp.name }}</td>
+    <td>{{ emp.project }}</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
