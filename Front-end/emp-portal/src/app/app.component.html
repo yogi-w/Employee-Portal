@@ -23,6 +23,14 @@
       </div>
 
       <div class="form-group">
+        <label>Role</label>
+        <input type="text" 
+        [(ngModel)] = "role"
+        name="role"
+        placeholder="Enter Name">
+      </div>
+
+      <div class="form-group">
         <label>Project</label>
         <input type="text" 
         name="project"
@@ -51,12 +59,14 @@
   <tr>
     <th>Emp ID</th>
     <th>Name</th>
+    <th>Role</th>
     <th>Project</th>
   </tr>
 
   <tr *ngFor="let emp of employees">
     <td>{{ emp.empId }}</td>
     <td>{{ emp.name }}</td>
+    <td>{{ emp.role }}</td>
     <td>{{ emp.project }}</td>
   </tr>
 </table>

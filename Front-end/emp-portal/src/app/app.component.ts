@@ -12,6 +12,7 @@ export class AppComponent {
   empId = ''
   name = ''
   project = ''
+  role = ''
 
   constructor(private es : EmployeeService) {}
 
@@ -20,10 +21,11 @@ export class AppComponent {
         const empDetails = {
         empId : this.empId,
         name : this.name,
+        role : this.role,
         project : this.project
       }
 
-      if (!this.empId || !this.name || !this.project) {
+      if (!this.empId || !this.name || !this.project || !this.role) {
         return;
         
       }
@@ -34,6 +36,7 @@ export class AppComponent {
           this.empId = ''
           this.name = ''
           this.project = ''
+          this.role = ''
       })
       .catch(err => console.log(err))
 
