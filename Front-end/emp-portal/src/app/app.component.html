@@ -4,14 +4,18 @@
 
   <div class="container">
     
-    <form class="emp-form">
+    <form class="emp-form" #empForm="ngForm">
       <div class="form-group">
         <label>Emp ID</label>
         <input type="text" 
+        name="empId" 
         required
-        name="empId"
         [(ngModel)] = "empId"
+        #empIdRef = "ngModel"
         placeholder="Enter Employee ID">
+        <div class="error" *ngIf="empIdRef.invalid && empIdRef.touched">
+          Employee ID is required
+        </div>
       </div>
 
       <div class="form-group">
@@ -19,32 +23,53 @@
         <input type="text" 
         [(ngModel)] = "name"
         name="name"
+        required
+        #nameRef="ngModel"
         placeholder="Enter Name">
+        <div class="error" *ngIf="nameRef.invalid && nameRef.touched">
+          Name is required
+        </div>
       </div>
 
       <div class="form-group">
         <label>Role</label>
         <input type="text" 
         [(ngModel)] = "role"
+        required
+        #roleRef="ngModel"
         name="role"
         placeholder="Enter Name">
+        <div class="error" *ngIf="roleRef.invalid && roleRef.touched">
+          Role is required
+        </div>
       </div>
 
       <div class="form-group">
         <label>Project</label>
         <input type="text" 
         name="project"
+        required
         [(ngModel)] = "project"
+        #projectRef = "ngModel"
         placeholder="Enter Project">
+        <div class="error" *ngIf="projectRef.invalid && projectRef.touched">
+          Project is required
+        </div>
+
       </div>
 
       <div class="button-group">
-        <button type="button" (click) = "submitEmployee()" class="btn add-btn">Add Employee</button>
+        <button [disabled]="empForm.invalid" type="button" (click) = "submitEmployee(empForm)" class="btn add-btn">Add Employee</button>
         <button type="button" (click)="getData()" class="btn fetch-btn">Employee List</button>
 
-        <!--  -->
+  
+      </div>
+
+      <div class="success-msg" *ngIf="successMsg">
+        {{ successMsg }}
       </div>
     </form>
+
 
 
   </div>

@@ -13,10 +13,11 @@ export class AppComponent {
   name = ''
   project = ''
   role = ''
+  successMsg = ''
 
   constructor(private es : EmployeeService) {}
 
-  submitEmployee(){
+  submitEmployee(form : any){
 
         const empDetails = {
         empId : this.empId,
@@ -33,10 +34,20 @@ export class AppComponent {
       this.es.addEmployee(empDetails)
       .then(res => {
         console.log("data sent",res.data)
-          this.empId = ''
-          this.name = ''
-          this.project = ''
-          this.role = ''
+
+
+        // refresh table immediately
+        // this.getData()
+
+        // show message
+        this.successMsg = 'Employee added successfully';
+        setTimeout(() => {
+          this.successMsg = '';
+        }, 3000);
+
+
+        // reset form 
+        form.resetForm()
       })
       .catch(err => console.log(err))
 
